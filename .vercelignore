@@ -1,0 +1,16 @@
+# Exclude large zip files and heavy source folders not needed for presentation
+*.zip
+updates last week/
+recent_files.txt
+zip_contents.txt
+*.tmp
+*.log
+.git
+.vscode
+.idea
+/cabbage
+/cabbage with screen graph
+/chicken leg
+/fork
+/dynamic_recovery_sim
+/replanning
