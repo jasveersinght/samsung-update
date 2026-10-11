@@ -20,3 +20,5 @@ zip_contents.txt
 Thumbs.db
 .vscode/
 .idea/
+
+.vercel
