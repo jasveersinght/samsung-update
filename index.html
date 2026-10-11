@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samsung PRISM | VLM-TAMP Robotic Manipulation Progress</title>
+  <meta name="description" content="Samsung PRISM Project Progress Update: VLM-TAMP ROS2 Implementation for Language-Guided Robotic Manipulation at SRM Institute of Science and Technology.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Header: Only Heading As Requested -->
+  <header class="page-header">
+    <div class="container header-container">
+      <div class="samsung-prism-badge">
+        <svg class="prism-icon" viewBox="0 0 24 24">
+          <path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13H5.5L12 6.5z"/>
+        </svg>
+        <span>SAMSUNG PRISM</span>
+      </div>
+      <h1 class="main-title">
+        VLM-TAMP: A ROS2 Implementation for Language-Guided Robotic Manipulation
+      </h1>
+      <p class="sub-title">
+        SRM Institute of Science and Technology • Department of CTECH &amp; Mechanical
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Project Foundations (The 2 Uploaded Screenshots) -->
+    <section id="foundations" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Initial Specifications</span>
+          <h2 class="section-title">Project Foundations & Scope</h2>
+          <p class="section-desc">
+            Summary of the preliminary project proposal, problem statement, and deliverables defined in the initial Samsung PRISM requirements.
+          </p>
+        </div>
+
+        <div class="ss-grid">
+          <!-- Slide 1 Card -->
+          <div class="ss-card">
+            <div class="ss-preview" onclick="openMediaModal('project_overview_slide1.png', 'image', '[Samsung PRISM] Preliminary Discussion — VLM-TAMP: A ROS2 implementation for language-guided Robotic Manipulation (SRMIST CTECH & Mechanical)')">
+              <img src="project_overview_slide1.png" alt="Samsung PRISM Preliminary Discussion Slide">
+              <div class="ss-badge-overlay">Slide 1 • Preliminary Discussion</div>
+              <div class="ss-click-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                Enlarge Slide
+              </div>
+            </div>
+            <div class="ss-info">
+              <div class="ss-tag-row">
+                <span class="ss-pill primary">SRMIST Partnership</span>
+                <span class="ss-pill">CTECH &amp; Mechanical</span>
+                <span class="ss-pill">Kickoff: 3rd May</span>
+              </div>
+              <h3 class="ss-title">VLM-TAMP Core Initiative</h3>
+              <p class="ss-summary">
+                Official preliminary worklet between Samsung PRISM and SRM Institute of Science and Technology. Initiated to advance robot manipulation from static scripts to generalized natural language comprehension and closed-loop control.
+              </p>
+              <ul class="ss-keypoints">
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>Faculty Mentors:</strong> Dr. B. Sowmiya &amp; Dr. Dr. V. Manoj Kumar</span>
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>Student Researchers:</strong> Jasveer Singh Tuteja, Revant Lenka, Sattwik Bose, Saravanan R</span>
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>Scope:</strong> Long-horizon household manipulation, Kitchen World simulations, and mobile manipulators.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Slide 2 Card -->
+          <div class="ss-card">
+            <div class="ss-preview" onclick="openMediaModal('worklet_requirements_slide2.png', 'image', 'Work-let Area Robotics — Problem Statement & Technical Expectations for ROS2 VLM-TAMP Stack')">
+              <img src="worklet_requirements_slide2.png" alt="Robotics Work-let Problem Statement Slide">
+              <div class="ss-badge-overlay">Slide 2 • Work-let Requirements</div>
+              <div class="ss-click-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                Enlarge Slide
+              </div>
+            </div>
+            <div class="ss-info">
+              <div class="ss-tag-row">
+                <span class="ss-pill primary">Architecture Goals</span>
+                <span class="ss-pill success">ROS2 Native</span>
+                <span class="ss-pill">PDDLStream / MoveIt</span>
+              </div>
+              <h3 class="ss-title">Problem Statement & Deliverables</h3>
+              <p class="ss-summary">
+                Build a ROS2-native, modular implementation of Vision-Language-Model-guided Task and Motion Planning (VLM-TAMP). Takes natural language prompts and scene state, produces semantic subgoals via VLM, enforces geometric feasibility via TAMP, and executes with dynamic replanning.
+              </p>
+              <ul class="ss-keypoints">
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>Modular ROS2 Nodes:</strong> <code>vlm_subgoal_node</code>, <code>tamp_planner_node</code>, <code>plan_executor_node</code>, <code>scene_state_node</code>.</span>
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>Action Interfaces:</strong> <code>GenerateSubgoals</code>, <code>PlanTask</code>, <code>ExecutePlan</code>.</span>
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>Simulation Targets:</strong> Gazebo, PyBullet Kitchen World, and stretch goal Isaac Sim bridge.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Progress Worked On Till Now -->
+    <section id="milestones" class="section alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Progress Roadmap</span>
+          <h2 class="section-title">What We Have Worked On Till Now</h2>
+          <p class="section-desc">
+            Milestones completed from initial baseline manipulation to dynamic world modeling and closed-loop replanning.
+          </p>
+        </div>
+
+        <div class="progress-timeline">
+          <!-- Phase 1 -->
+          <div class="phase-card">
+            <div class="phase-header">
+              <span class="phase-number">Phase 1</span>
+              <span class="phase-status completed">✓ Completed</span>
+            </div>
+            <h3 class="phase-title">Baseline Manipulation in Kitchen World</h3>
+            <p class="phase-desc">
+              Validated the baseline VLM-TAMP pipeline across realistic kitchen manipulation tasks using TIAGo bot and PR2 mobile manipulators.
+            </p>
+            <ul class="phase-items">
+              <li><span>✓</span> Scissors pick-and-place operation</li>
+              <li><span>✓</span> Cabbage retrieval from refrigerator</li>
+              <li><span>✓</span> Chicken leg grasp and counter placement</li>
+              <li><span>✓</span> Bottle grasp and relocation</li>
+              <li><span>✓</span> Custom 4-Room World Model with human dynamic obstacles</li>
+            </ul>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="phase-card">
+            <div class="phase-header">
+              <span class="phase-number">Phase 2</span>
+              <span class="phase-status completed">✓ Completed</span>
+            </div>
+            <h3 class="phase-title">World Model & Scene Graph Integration</h3>
+            <p class="phase-desc">
+              Created real-time PyBullet runtime synchronization to maintain physical pose tracking, entity classification, and dynamic topological relationships.
+            </p>
+            <ul class="phase-items">
+              <li><span>✓</span> Scene Graph node creation &amp; tracking</li>
+              <li><span>✓</span> Semantic entity states: Cabbage, Chicken Leg, Fork, etc.</li>
+              <li><span>✓</span> Relationship updater: <code>HOLDS</code>, <code>SUPPORTS</code>, <code>CONTAINS</code></li>
+              <li><span>✓</span> Event manager: <code>OBJECT_MOVED</code>, <code>OBJECT_PICKED</code>, <code>OBJECT_DROPPED</code></li>
+              <li><span>✓</span> Natural language chatbot interface integration</li>
+            </ul>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="phase-card">
+            <div class="phase-header">
+              <span class="phase-number">Phase 3</span>
+              <span class="phase-status completed">✓ Completed</span>
+            </div>
+            <h3 class="phase-title">Dynamic Replanning Architecture</h3>
+            <p class="phase-desc">
+              Designed the closed loop between physical environment disturbances, plan invalidation, and automated recovery trajectory generation.
+            </p>
+            <ul class="phase-items">
+              <li><span>✓</span> Dynamic replanner bridge to PDDLStream agent</li>
+              <li><span>✓</span> Environment B Stress Test: 0.0000m recovery error</li>
+              <li><span>✓</span> Disturbance events: <code>OBJECT_MOVED</code>, <code>OBJECT_DROPPED</code></li>
+              <li><span>✓</span> Dynamic recovery waypoint synthesis logic</li>
+            </ul>
+          </div>
+
+          <!-- Phase 4 -->
+          <div class="phase-card" style="border-color: rgba(0, 87, 255, 0.4); box-shadow: 0 4px 16px rgba(0, 87, 255, 0.08);">
+            <div class="phase-header">
+              <span class="phase-number" style="color: var(--primary);">Phase 4 (Latest)</span>
+              <span class="phase-status" style="background: var(--primary-subtle); color: var(--primary); border: 1px solid rgba(0, 87, 255, 0.25);">⭐ Tested Last Week</span>
+            </div>
+            <h3 class="phase-title">New Kitchen World &amp; Replanning Testing</h3>
+            <p class="phase-desc">
+              Constructed the upgraded PyBullet Kitchen World environment and completed stress testing of the dynamic replanning runtime loop.
+            </p>
+            <ul class="phase-items">
+              <li><span>✓</span> Upgraded Kitchen World (appliances &amp; stations)</li>
+              <li><span>✓</span> DynamicReplanner hook in PDDLStream agent</li>
+              <li><span>✓</span> In-flight disturbance testing with debouncing</li>
+              <li><span>✓</span> Zero-divergence recovery in cabbage log</li>
+              <li><span>✓</span> Captured demonstration: <code>replanning.webm</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Last Week Update: New Kitchen World & Dynamic Replanning Testing -->
+    <section id="latest-update" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" style="background: #eff6ff; color: #0057ff; border: 1px solid rgba(0,87,255,0.25);">Latest Sprint Update</span>
+          <h2 class="section-title">New Kitchen World &amp; Dynamic Replanning Testing</h2>
+          <p class="section-desc">
+            Progress completed over the past week: Construction of our upgraded 3D Kitchen World simulation environment and full end-to-end testing of the dynamic replanning recovery loop.
+          </p>
+        </div>
+
+        <div class="latest-update-container">
+          <!-- Left: Video Demo -->
+          <div class="latest-video-pane">
+            <div class="latest-video-player" onclick="openMediaModal('replanning.webm', 'video', 'Last Week Update: Live Dynamic Replanning testing in the newly created Kitchen World environment with obstacle disturbance injection.')">
+              <video preload="metadata" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()">
+                <source src="replanning.webm" type="video/webm">
+              </video>
+              <div class="latest-video-badge">
+                <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#22c55e;"></span>
+                TEST RECORDING • 7.3 MB
+              </div>
+              <div class="video-overlay-play">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Technical Details -->
+          <div class="latest-content-pane">
+            <div>
+              <div class="latest-badge-row">
+                <span class="ss-pill primary">New Kitchen World</span>
+                <span class="ss-pill success">Dynamic Replanning Tested</span>
+                <span class="ss-pill">Sprint: Past Week</span>
+              </div>
+              <h3 class="latest-title">Upgraded Kitchen World &amp; Live Replanner Validation</h3>
+              <p class="latest-desc">
+                We developed an expanded PyBullet kitchen environment featuring multi-tier storage, appliances, and dynamic objects, then validated our closed-loop replanning pipeline by introducing perturbations during task execution.
+              </p>
+
+              <ul class="latest-features-list">
+                <li class="latest-feature-item">
+                  <div class="latest-feature-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <div>
+                    <strong>New Kitchen World Environment:</strong> Built high-fidelity simulation model with articulated entities (refrigerator, dishwasher, braiser body/lid, tabletop stations) and verified collision-free approach paths.
+                  </div>
+                </li>
+                <li class="latest-feature-item">
+                  <div class="latest-feature-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <div>
+                    <strong>Direct Runtime Hook in Agent:</strong> Integrated the <code>DynamicReplanner</code> directly inside <code>pddlstream_agent.py</code>, allowing real-time event checks at every action step without interrupting process control.
+                  </div>
+                </li>
+                <li class="latest-feature-item">
+                  <div class="latest-feature-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <div>
+                    <strong>Perturbation &amp; Recovery Testing:</strong> Tested dynamic target shifts and obstacle insertions. The system triggers <code>OBJECT_MOVED</code>, suspends the obsolete trajectory, resynthesizes subgoals via FastDownward, and recovers cleanly.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="latest-meta-bar">
+              <div class="latest-metrics-group">
+                <div class="latest-metric-col">
+                  <span class="latest-metric-val">100%</span>
+                  <span class="latest-metric-lbl">Recovery Success</span>
+                </div>
+                <div class="latest-metric-col">
+                  <span class="latest-metric-val">0.037s</span>
+                  <span class="latest-metric-lbl">Replan Latency</span>
+                </div>
+                <div class="latest-metric-col">
+                  <span class="latest-metric-val">0.000m</span>
+                  <span class="latest-metric-lbl">Target Offset</span>
+                </div>
+              </div>
+              <button class="latest-action-btn" onclick="openMediaModal('replanning.webm', 'video', 'Last Week Update: Live Dynamic Replanning testing in the new Kitchen World simulation with in-flight disturbance recovery.')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Watch Recording
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Video Demonstrations -->
+    <section id="demos" class="section alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Tested Demos</span>
+          <h2 class="section-title">Video Demonstrations &amp; Recorded Tests</h2>
+          <p class="section-desc">
+            Direct recordings from our simulated Kitchen World and dynamic stress-test environments showcasing perception, manipulation, scene graphs, and replanning.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="gallery-controls">
+          <button class="filter-btn active" onclick="filterVideos('all')">All Demos (7)</button>
+          <button class="filter-btn" onclick="filterVideos('latest')">⭐ Last Week Update (1)</button>
+          <button class="filter-btn" onclick="filterVideos('baseline')">Baseline Tasks (3)</button>
+          <button class="filter-btn" onclick="filterVideos('worldmodel')">Scene Graph &amp; AI (2)</button>
+          <button class="filter-btn" onclick="filterVideos('recovery')">Dynamic Recovery (2)</button>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="video-grid" id="videoGrid">
+
+          <!-- Featured Video: Dynamic Replanning in New Kitchen World -->
+          <div class="video-card" data-category="latest recovery" style="border-color: rgba(0, 87, 255, 0.4); box-shadow: 0 4px 18px rgba(0, 87, 255, 0.08);">
+            <div class="video-player-container" onclick="openMediaModal('replanning.webm', 'video', 'Last Week Update: Full Dynamic Replanning Testing in New Kitchen World with live disturbance injection and trajectory re-synthesis.')">
+              <video preload="metadata" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()">
+                <source src="replanning.webm" type="video/webm">
+              </video>
+              <div class="video-badge" style="color: #0057ff; border-color: rgba(0,87,255,0.3); background: #eff6ff;">
+                ⭐ Last Week Update • New Kitchen World
+              </div>
+              <div class="video-overlay-play">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="video-info">
+              <h4 class="video-title">Dynamic Replanning in New Kitchen World</h4>
+              <p class="video-desc">
+                Testing our closed-loop recovery pipeline inside the newly built Kitchen World. When an unexpected disturbance alters object coordinates mid-task, the system immediately suspends the old path, resynthesizes recovery steps via FastDownward, and reaches the goal.
+              </p>
+              <div class="video-tags">
+                <span class="tag-badge" style="background: #eff6ff; color: #0057ff; border-color: rgba(0,87,255,0.2);">New Kitchen World</span>
+                <span class="tag-badge">Dynamic Replanning</span>
+                <span class="tag-badge">Closed-Loop Recovery</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Video 1: Cabbage Retrieval -->
+          <div class="video-card" data-category="baseline">
+            <div class="video-player-container" onclick="openMediaModal('cabbage.webm', 'video', 'Cabbage Pick-and-Place: Verification of refrigerator retrieval, path planning, and stable placement on the kitchen counter.')">
+              <video preload="metadata" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()">
+                <source src="cabbage.webm" type="video/webm">
+              </video>
+              <div class="video-badge">Video 1 • Baseline</div>
+              <div class="video-overlay-play">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="video-info">
+              <h4 class="video-title">Cabbage Retrieval & Place</h4>
+              <p class="video-desc">
+                The robot accesses the refrigerator compartment, detects the organic cabbage geometry, computes grasping pose, and navigates safely to place it on the kitchen counter.
+              </p>
+              <div class="video-tags">
+                <span class="tag-badge">TIAGo Bot</span>
+                <span class="tag-badge">Refrigerator Access</span>
+                <span class="tag-badge">Grasp Execution</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 2: Cabbage with Scene Graph -->
+          <div class="video-card" data-category="worldmodel">
+            <div class="video-player-container" onclick="openMediaModal('cabbage_with_screen_graph.webm', 'video', 'Cabbage Manipulation with Live Scene Graph: Visualizing semantic node states, topological graph updates, and object coordinates in real time.')">
+              <video preload="metadata" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()">
+                <source src="cabbage_with_screen_graph.webm" type="video/webm">
+              </video>
+              <div class="video-badge">Video 2 • World Model</div>
+              <div class="video-overlay-play">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="video-info">
+              <h4 class="video-title">Cabbage with Live Scene Graph</h4>
+              <p class="video-desc">
+                Demonstrates runtime Scene Graph tracking. As the robot lifts and moves the cabbage, the relationship dynamically updates from <code>CONTAINS(Fridge, Cabbage)</code> to <code>HOLDS(Robot, Cabbage)</code> to <code>SUPPORTS(Counter, Cabbage)</code>.
+              </p>
+              <div class="video-tags">
+                <span class="tag-badge">Scene Graph</span>
+                <span class="tag-badge">Live Overlay</span>
+                <span class="tag-badge">Topology Sync</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 3: Chatbot Integration -->
+          <div class="video-card" data-category="worldmodel">
+            <div class="video-player-container" onclick="openMediaModal('chatbot_integration.webm', 'video', 'Chatbot & Natural Language Goal Decomposition: Natural language prompt input parsed into structured semantic subgoals for the TAMP engine.')">
+              <video preload="metadata" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()">
+                <source src="chatbot_integration.webm" type="video/webm">
+              </video>
+              <div class="video-badge">Video 3 • VLM Chatbot</div>
+              <div class="video-overlay-play">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="video-info">
+              <h4 class="video-title">Natural Language Chatbot</h4>
+              <p class="video-desc">
+                Interactive chatbot integration accepting user intent (e.g., "Prepare ingredients for chicken soup"), decomposing high-level language into executable sequence subgoals for the motion planner.
+              </p>
+              <div class="video-tags">
+                <span class="tag-badge">LLM / VLM</span>
+                <span class="tag-badge">Natural Language</span>
+                <span class="tag-badge">Prompting</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 4: Chicken Leg Manipulation -->
+          <div class="video-card" data-category="baseline">
+            <div class="video-player-container" onclick="openMediaModal('chicken_leg.webm', 'video', 'Chicken Leg Pick-and-Place: Complex mesh grasp planning and transfer from refrigerator to cooking station.')">
+              <video preload="metadata" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()">
+                <source src="chicken_leg.webm" type="video/webm">
+              </video>
+              <div class="video-badge">Video 4 • Baseline</div>
+              <div class="video-overlay-play">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="video-info">
+              <h4 class="video-title">Chicken Leg Pick-and-Place</h4>
+              <p class="video-desc">
+                Testing grasp stability on irregular organic shapes. Robot plans collision-free arm trajectories, achieves firm contact with the chicken leg model, and positions it on the counter surface.
+              </p>
+              <div class="video-tags">
+                <span class="tag-badge">Complex Mesh</span>
+                <span class="tag-badge">PyBullet</span>
+                <span class="tag-badge">Arm Motion</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 5: Fork Manipulation -->
+          <div class="video-card" data-category="baseline">
+            <div class="video-player-container" onclick="openMediaModal('fork.webm', 'video', 'Fork Precision Manipulation: Fine-motor small utensil grasping and transport.')">
+              <video preload="metadata" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()">
+                <source src="fork.webm" type="video/webm">
+              </video>
+              <div class="video-badge">Video 5 • Baseline</div>
+              <div class="video-overlay-play">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="video-info">
+              <h4 class="video-title">Fork Precision Manipulation</h4>
+              <p class="video-desc">
+                Evaluating precision tool grasping for thin utensil objects. Verifies gripper clearance, narrow approach vectors, and anti-slip execution during tabletop movement.
+              </p>
+              <div class="video-tags">
+                <span class="tag-badge">Utensils</span>
+                <span class="tag-badge">Precision Grasp</span>
+                <span class="tag-badge">IK Planning</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 6: Dynamic Recovery in Environment B -->
+          <div class="video-card" data-category="recovery">
+            <div class="video-player-container" onclick="openMediaModal('dynamic_recovery_sim.webm', 'video', 'Environment B Dynamic Recovery: In-flight perturbation injection, real-time event triggering, and automated waypoint replanning.')">
+              <video preload="metadata" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()">
+                <source src="dynamic_recovery_sim.webm" type="video/webm">
+              </video>
+              <div class="video-badge" style="color: #15803d; border-color: rgba(22,163,74,0.3); background: #f0fdf4;">Video 6 • Recovery Loop</div>
+              <div class="video-overlay-play" style="background: rgba(22,163,74,0.9); box-shadow: 0 4px 16px rgba(22,163,74,0.4);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="video-info">
+              <h4 class="video-title">Dynamic Recovery Loop (Env B)</h4>
+              <p class="video-desc">
+                Robot encounters an unexpected obstacle mid-trajectory at (0.5, 0.5, 0.45). The <code>DynamicReplanner</code> detects <code>OBJECT_MOVED</code>, suspends old path, computes 3 new recovery waypoints, and achieves target with 0.0000m error.
+              </p>
+              <div class="video-tags">
+                <span class="tag-badge">Closed-Loop</span>
+                <span class="tag-badge">Dynamic Replanning</span>
+                <span class="tag-badge">0.0000m Accuracy</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Architecture & AI Runtime -->
+    <section id="architecture" class="section alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Internal Engineering</span>
+          <h2 class="section-title">System Architecture &amp; AI Runtime</h2>
+          <p class="section-desc">
+            How our developed <code>AIRuntime</code> connects physical simulator events, topological scene graph updates, and the high-level PDDLStream replanning pipeline.
+          </p>
+        </div>
+
+        <div class="arch-layout">
+          <!-- Flow Box -->
+          <div class="arch-visual-box">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem;">Closed-Loop Replanning Flow</h3>
+            
+            <div class="arch-flow">
+              <!-- Node 1 -->
+              <div class="flow-node">
+                <div class="node-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <div class="node-content">
+                  <h4>1. Natural Language Goal</h4>
+                  <p>Human prompt ("Retrieve the cabbage for soup") received and processed by VLM / Chatbot node into semantic goal predicates.</p>
+                </div>
+              </div>
+
+              <div class="flow-arrow-down">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </div>
+
+              <!-- Node 2 -->
+              <div class="flow-node">
+                <div class="node-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                </div>
+                <div class="node-content">
+                  <h4>2. Dynamic Scene Graph &amp; World Model</h4>
+                  <p><code>GraphUpdater</code> tracks physical PyBullet bodies; <code>RelationshipUpdater</code> infers spatial topologies (<code>HOLDS</code>, <code>SUPPORTS</code>, <code>CONTAINS</code>).</p>
+                </div>
+              </div>
+
+              <div class="flow-arrow-down">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </div>
+
+              <!-- Node 3 -->
+              <div class="flow-node">
+                <div class="node-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                </div>
+                <div class="node-content">
+                  <h4>3. PDDLStream Task &amp; Motion Planner</h4>
+                  <p>FastDownward symbolic planner evaluates feasibility while IKFast / TracIK solves whole-body inverse kinematics.</p>
+                </div>
+              </div>
+
+              <div class="flow-arrow-down">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </div>
+
+              <!-- Node 4 -->
+              <div class="flow-node" style="border-color: rgba(22, 163, 74, 0.35); background: #f0fdf4;">
+                <div class="node-icon-box" style="background: rgba(22, 163, 74, 0.15); border-color: rgba(22, 163, 74, 0.3); color: #15803d;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                </div>
+                <div class="node-content">
+                  <h4 style="color: #15803d;">4. Dynamic Recovery Feedback Loop</h4>
+                  <p>If physical state diverges (e.g. <code>OBJECT_MOVED</code>), <code>EventManager</code> triggers <code>DynamicReplanner</code> to recompute recovery waypoints safely.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Runtime Modules Box (Replaces Code Box) -->
+          <div class="arch-modules-box">
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem; color: var(--text-main);">Core AI Runtime Subsystems</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.5;">
+              Key software subsystems orchestrated within the PyBullet simulation to achieve continuous state synchronization and disturbance recovery.
+            </p>
+
+            <div class="modules-list">
+              <!-- Module 1 -->
+              <div class="module-card">
+                <div class="module-top">
+                  <span class="module-name">AIRuntime Coordinator</span>
+                  <span class="module-tag">Orchestration</span>
+                </div>
+                <p class="module-desc">
+                  Primary synchronization loop bridging physical PyBullet physics steps with high-level cognitive layers. Executes tick-level updates of entity poses and topological links.
+                </p>
+              </div>
+
+              <!-- Module 2 -->
+              <div class="module-card">
+                <div class="module-top">
+                  <span class="module-name">DynamicReplanner Hook</span>
+                  <span class="module-tag">PDDLStream Agent</span>
+                </div>
+                <p class="module-desc">
+                  Directly embedded within <code>pddlstream_agent.py</code>. Intercepts perturbation events during task execution, immediately flags invalid steps, and triggers symbolic recovery re-planning.
+                </p>
+              </div>
+
+              <!-- Module 3 -->
+              <div class="module-card">
+                <div class="module-top">
+                  <span class="module-name">Graph &amp; Relationship Updaters</span>
+                  <span class="module-tag">Topology Engine</span>
+                </div>
+                <p class="module-desc">
+                  Maintains the live semantic Scene Graph. Tracks continuous coordinate transforms and evaluates spatial relations (<code>HOLDS</code>, <code>SUPPORTS</code>, <code>CONTAINS</code>) in real time.
+                </p>
+              </div>
+
+              <!-- Module 4 -->
+              <div class="module-card">
+                <div class="module-top">
+                  <span class="module-name">EventManager &amp; Debouncing</span>
+                  <span class="module-tag">Disturbance Filtering</span>
+                </div>
+                <p class="module-desc">
+                  Listens for physical anomalies (<code>OBJECT_MOVED</code>, <code>OBJECT_DROPPED</code>) and filters transient physics jitter using temporal debouncing before alerting the planner.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Dynamic Disturbance Matrix -->
+    <section id="matrix" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Validation Matrix</span>
+          <h2 class="section-title">Dynamic Environment Test Matrix (T1 – T12)</h2>
+          <p class="section-desc">
+            Systematic perturbation test cases defined in Slide 14 to evaluate world model resilience, state tracking, and replanning triggers under unexpected environmental changes.
+          </p>
+        </div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T1</span><span class="matrix-status-dot"></span></div>
+            <h5>Object Added</h5>
+            <p>Instantaneous creation of unexpected object. Runtime updates Scene Graph with spatial coordinates.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T2</span><span class="matrix-status-dot"></span></div>
+            <h5>Object Removed</h5>
+            <p>Scene Graph purges removed body, removing all linked <code>SUPPORTS</code>/<code>CONTAINS</code> edges.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T3</span><span class="matrix-status-dot"></span></div>
+            <h5>Object Moved</h5>
+            <p>Generates <code>OBJECT_MOVED</code> event, calculates delta distance, and alerts the replanner.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T4</span><span class="matrix-status-dot"></span></div>
+            <h5>Object Dropped</h5>
+            <p>Detects abrupt vertical drop, updates state from <code>HOLDS</code> to ground/table support.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T5</span><span class="matrix-status-dot"></span></div>
+            <h5>Target Blocked</h5>
+            <p>Obstacle placed in front of destination zone; detects obstruction and halts direct trajectory.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T6</span><span class="matrix-status-dot"></span></div>
+            <h5>Disturbed In-Flight</h5>
+            <p>Target object displaced during robot trajectory; updates world graph and safely synchronizes replan.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T7</span><span class="matrix-status-dot"></span></div>
+            <h5>Similar Objects</h5>
+            <p>Distinguishes salt vs. pepper shakers and ensures semantic entity persistence without confusion.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T8</span><span class="matrix-status-dot"></span></div>
+            <h5>Cupboard Open/Close</h5>
+            <p>Updates accessibility status of internal items depending on articulated joint angles.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T9</span><span class="matrix-status-dot"></span></div>
+            <h5>Microwave State</h5>
+            <p>Monitors closed → open transitions; updates container state before reaching into chamber.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T10</span><span class="matrix-status-dot"></span></div>
+            <h5>Braiser Lid Toggle</h5>
+            <p>Identifies whether braiser pot lid is seated or removed, regulating containment access.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T11</span><span class="matrix-status-dot"></span></div>
+            <h5>Moved Post-Planning</h5>
+            <p>Object moved right after plan generation; validates plan validity before execution to prevent misses.</p>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-top"><span class="matrix-id">TEST T12</span><span class="matrix-status-dot"></span></div>
+            <h5>Multiple Changes</h5>
+            <p>Simultaneous perturbations handled seamlessly by batching events into a unified replanning request.</p>
+          </div>
+        </div>
+
+        <!-- Environment B Recovery Banner -->
+        <div class="recovery-banner">
+          <div class="recovery-text">
+            <h4>Environment B Dynamic Recovery Loop Validated ✅</h4>
+            <p>
+              During stress testing with moving obstacles at (0.5, 0.5, 0.45), our <code>DynamicReplanner</code> successfully detected the disruption, suspended the old trajectory, computed 3 fresh recovery waypoints: <code>[(0.0, -0.85, 0.0), (1.0, -0.85, 0.0), (1.8, -0.7, 0.0)]</code>, and achieved target contact with zero deviation!
+            </p>
+          </div>
+          <div class="recovery-metric-box">
+            <div class="recovery-metric-num">0.0000 m</div>
+            <div class="recovery-metric-sub">Final Target Distance</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Research Team & Mentors -->
+    <section id="team" class="section alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Collaborators</span>
+          <h2 class="section-title">Research Team &amp; Mentors</h2>
+          <p class="section-desc">
+            Collaborative effort between SRM Institute of Science and Technology and Samsung PRISM.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <!-- Faculty Mentors -->
+          <div class="team-group-card">
+            <h4 class="group-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              Faculty Mentors (SRMIST)
+            </h4>
+            <div class="member-list">
+              <div class="member-card">
+                <div class="member-avatar">BS</div>
+                <div class="member-details">
+                  <h5>Dr. B. Sowmiya</h5>
+                  <p>Professor, Department of CTECH</p>
+                  <a href="mailto:sowmiyab@srmist.edu.in">sowmiyab@srmist.edu.in</a>
+                </div>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar">VM</div>
+                <div class="member-details">
+                  <h5>Dr. Dr. V. Manoj Kumar</h5>
+                  <p>Professor, Department of CTECH &amp; Mechanical</p>
+                  <a href="mailto:manojkuv@srmist.edu.in">manojkuv@srmist.edu.in</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Researchers -->
+          <div class="team-group-card">
+            <h4 class="group-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Student Researchers
+            </h4>
+            <div class="member-list">
+              <div class="member-card">
+                <div class="member-avatar">JT</div>
+                <div class="member-details">
+                  <h5>Jasveer Singh Tuteja</h5>
+                  <p>Robotics &amp; AI Researcher</p>
+                  <a href="mailto:jt9019@srmist.edu.in">jt9019@srmist.edu.in</a>
+                </div>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar">RL</div>
+                <div class="member-details">
+                  <h5>Revant Lenka</h5>
+                  <p>Robotics &amp; Perception Researcher</p>
+                  <a href="mailto:rl7977@srmist.edu.in">rl7977@srmist.edu.in</a>
+                </div>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar">SB</div>
+                <div class="member-details">
+                  <h5>Sattwik Bose</h5>
+                  <p>Robotics Systems Researcher</p>
+                  <a href="mailto:sb1674@srmist.edu.in">sb1674@srmist.edu.in</a>
+                </div>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar">SR</div>
+                <div class="member-details">
+                  <h5>Saravanan R</h5>
+                  <p>Mechanical &amp; Simulation Engineer</p>
+                  <a href="mailto:sr7874@srmist.edu.in">sr7874@srmist.edu.in</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="samsung-prism-badge" style="margin-bottom: 0.65rem;">
+            <svg class="prism-icon" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13H5.5L12 6.5z"/></svg>
+            <span>SAMSUNG PRISM</span>
+          </div>
+          <h4>VLM-TAMP Robotics Manipulation Research</h4>
+          <p>
+            An ongoing research initiative exploring language-conditioned task-and-motion planning, dynamic scene graphs, and closed-loop recovery loops for intelligent service robots.
+          </p>
+        </div>
+        <div>
+          <h5 style="color: #0f172a; margin-bottom: 0.4rem; font-size: 0.9rem;">References &amp; Tools</h5>
+          <p style="font-size: 0.82rem; line-height: 1.6; color: #64748b;">
+            • Yang et al., <em>Guiding Long-Horizon TAMP with VLMs</em> (ICRA 2025)<br>
+            • PDDLStream Planning Framework (Caelan Garrett)<br>
+            • Kitchen Worlds &amp; PyBullet Planning Stack<br>
+            • PAL Robotics TIAGo &amp; Willow Garage PR2
+          </p>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Samsung PRISM &amp; SRM Institute of Science and Technology. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Fullscreen Media Viewing -->
+  <div class="modal-backdrop" id="mediaModal" onclick="handleBackdropClick(event)">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modalTitle">Media Viewer</h3>
+        <button class="modal-close-btn" onclick="closeMediaModal()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-media-wrap" id="modalMediaWrap"></div>
+        <div class="modal-caption" id="modalCaption"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Archives and large zip files exceeding GitHub 100MB limit
+*.zip
+
+# Redundant unextended duplicates
+/cabbage
+/cabbage with screen graph
+/chicken leg
+/fork
+/dynamic_recovery_sim
+/replanning
+updates last week/replanning
+
+# Scratch logs & temp analysis files
+recent_files.txt
+zip_contents.txt
+*.tmp
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,241 @@
+=== SLIDE 1 ===
+[Samsung PRISM] Video Progress of Our World Model and Tiago Bot Testing at Different Test Cases
+Team
+3.
+Department: CTECH & Mechanical
+1.College Professor(s):
+Dr. B.Sowmiya / sowmiyab@srmist.edu.in
+Dr. V. Manoj Kumar / manojkuv@srmist.edu.in
+2.
+Students:
+1.Revant Lenka / rl7977@srmist.edu.in
+2.Jasveer Singh Tuteja / jt9019@srmist.edu.in 3.Sattwik  Bose / sb1674@srmist.edu.in
+4.Saravanan R / sr7874@srmist.edu.in
+VLM-TAMP–A ROS2 implementation for language-guided Robotic Manipulation
+Date:- 31 August,2026
+
+=== SLIDE 2 ===
+BASELINE MANIPULATION TESTING IN KITCHEN WORLD
+The initial phase of the project focused on validating the existing
+VLM-TAMP pipeline
+and the Kitchen World simulation environment. Multiple pick-and-place tasks were performed to verify that the robot could successfully detect, plan, grasp, transport, and place different objects.
+Test Cases Performed:
+Scissor pick-and-place operation
+Cabbage retrieval from refrigerator
+Chicken leg retrieval from refrigerator
+Bottle pick-and-place operation
+Objective:
+To establish a reliable baseline before integrating
+dynamic world-state awareness and replanning capabilities.
+
+=== SLIDE 3 ===
+PICK AND PLACE OF SCISSORS
+Video 1
+:- The Tiago robot was tested in the Kitchen World simulation environment to perform a pick-and-place operation. The task involved identifying and picking up a pair of scissors placed on a tray, planning the required motion, and safely transporting the object to a designated location on the counter. The test focused on verifying the robot's perception, grasping, motion planning, and execution capabilities within the simulated environment.
+
+=== SLIDE 4 ===
+PICK AND PLACE OF CABBAGE
+Video 2
+:-
+The Tiago robot was tested in the Kitchen World simulation environment to perform a pick-and-place operation involving a cabbage. The task required the robot to retrieve the cabbage from the refrigerator, plan and execute the necessary motions, and safely place it at a designated position on the counter. This test evaluated the robot's ability to perform object manipulation, motion planning, grasp execution, and placement within a realistic kitchen environment.
+
+=== SLIDE 5 ===
+PICK AND PLACE OF Chicken Leg
+Video 3
+:-
+The Tiago robot was tested in the Kitchen World simulation environment to perform a pick-and-place operation involving a chicken leg. The task required the robot to retrieve the chicken leg from the refrigerator, plan and execute the necessary motions, and safely place it at a designated location on the counter. This test evaluated the robot's object manipulation, motion planning, grasp execution, and placement capabilities within the simulated kitchen environment.
+
+=== SLIDE 6 ===
+PICK AND PLACE OF BOTTLE
+Video 4
+:-
+The Tiago robot was tested in the Kitchen World simulation environment to perform a pick-and-place operation involving a bottle. The task required the robot to identify and grasp the bottle, plan the required motion, and safely transport and place it at a designated location on the counter. This test evaluated the robot's object manipulation, grasp planning, motion planning, and placement capabilities within the simulated kitchen environment.
+
+=== SLIDE 7 ===
+CUSTOM FOUR-ROOM WORLD MODEL FOR TIAGO BOT TESTING
+Video 5
+:- A custom world model was developed consisting of
+four separate rooms
+to test the navigation, object detection, and pick-and-place capabilities of the Tiago robot. Two of the rooms contain
+tables positioned at the corners
+, with various tools and objects placed on them for performing object detection and pick-and-place operations. The remaining two rooms contain
+human models acting as dynamic obstacles
+, allowing the system to test whether the Tiago robot can navigate safely without colliding with people occupying the space. Additionally, each room has been designed with a
+single entry and exit point
+, creating controlled navigation paths and increasing the complexity of movement planning. This custom environment enables comprehensive testing of the Tiago robot's perception, navigation, obstacle avoidance, and manipulation capabilities.
+
+=== SLIDE 8 ===
+TRANSITION FROM BASELINE MANIPULATION TO DYNAMIC WORLD
+Objective:
+Extend the existing VLM-TAMP pipeline from static plan execution toward closed-loop, environment-aware manipulation.
+
+=== SLIDE 9 ===
+SCENE GRAPH INTEGRATION – COMPLETED
+Implemented
+Scene Graph creation
+Physical object registration
+Semantic object representation
+Object pose tracking
+Object category tracking
+Runtime graph updates
+Relationship updates
+Status:
+COMPLETED
+
+=== SLIDE 10 ===
+OBJECT DETECTION & WORLD-STATE TRACKING - COMPLETED
+Examples of Objects Being Tracked:
+{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}
+Object
+Tracked State
+Cabbage
+Position / Category
+Chicken Leg
+Position
+Fork
+Object Presence
+Salt Shaker
+Object Presence
+Pepper Shaker
+Object Presence
+Braiser / Lid
+Object / Environment State
+Microwave
+Environment State
+Important Note:
+Currently implemented within the simulation environment using the
+PyBullet
+world state.
+Status:
+COMPLETED
+The runtime continuously represents the current state of relevant objects in the simulation. When object information is obtained from the simulation environment, the corresponding Scene Graph representation can be updated with its position and category.
+
+=== SLIDE 11 ===
+SEMANTIC RELATIONSHIP & EVENT TRACKING - COMPLETED
+Detected Events:
+OBJECT_ADDED
+OBJECT_MOVED
+OBJECT_REMOVED
+OBJECT_PICKED
+OBJECT_DROPPED
+Example:
+Robot HOLDS Cabbage
+↓
+Object Placement
+↓
+Counter SUPPORTS Cabbage
+Status:
+COMPLETED
+Relationship Examples:
+Robot
+HOLDS
+object
+Counter
+SUPPORTS
+object
+Cupboard
+CONTAINS
+object
+Event Detection Pipeline:
+
+=== SLIDE 12 ===
+PROBLEMS DISCOVERED DURING INTEGRATION
+1. Physical vs Semantic Objects
+PyBullet
+Physical Body ≠ Scene Graph Semantic Object
+Some objects exist physically in the simulation but may not yet have a corresponding semantic representation in the Scene Graph.
+2. Environment Changes During Execution
+PLAN CREATED
+↓
+ROBOT EXECUTES
+↓
+ENVIRONMENT CHANGES
+↓
+OLD PLAN MAY BECOME INVALID
+3. Immediate Replanning Can Be Unsafe
+Current Plan A
+↓
+Robot Executing Action
+↓
+Event Detected
+↓
+New Plan Generated
+The new plan should not blindly replace the currently executing plan. The system requires
+safe execution and replanning synchronization
+.
+4. Planner Failure ≠ Perception Failure
+An object may be successfully represented in the Scene Graph, but the planner may still fail to generate a valid plan.
+5. Environment Object States
+Some objects have additional states beyond their position.
+Examples:
+Microwave
+CLOSED → OPEN
+Cupboard
+CLOSED → OPEN
+Braiser
+Lid
+CLOSED → OPEN
+These state changes can affect the accessibility of objects.
+Status:
+IDENTIFIED AND UNDER INVESTIGATION
+
+=== SLIDE 13 ===
+DYNAMIC REPLANNING – MAIN RESEARCH WORK
+Remaining Tasks:
+Plan validity checking
+Event-to-replanning trigger
+Execution–replanning synchronization
+World-state synchronization
+Safe replanning
+Plan resume mechanism
+Dynamic scenario validation
+Status:
+IN PROGRESS — MAIN REMAINING RESEARCH TASK
+The main remaining objective is to connect the detected environmental changes to the planning system. The robot should determine whether the current plan remains valid and, if necessary, safely stop, update the world state, generate a new plan, and resume execution.
+
+=== SLIDE 14 ===
+DYNAMIC ENVIRONMENT TEST MATRIX
+{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}
+Test
+Disturbance
+Expected Response
+T1
+Object added
+Update Scene Graph
+T2
+Object removed
+Update Scene Graph
+T3
+Object moved
+Generate OBJECT_MOVED
+T4
+Object dropped
+Detect state change
+T5
+Target blocked
+Detect obstruction
+T6
+Object disturbed during execution
+Update graph
+T7
+Similar object changes
+Maintain identity
+T8
+Cupboard opened/closed
+Update accessibility
+T9
+Microwave opened/closed
+Update environment state
+T10
+Braiser lid opened
+Update containment/access
+T11
+Target moved after planning
+Validate and replan
+T12
+Multiple simultaneous changes
+Replan from updated state
+
+=== SLIDE 15 ===
+Thank You
+
